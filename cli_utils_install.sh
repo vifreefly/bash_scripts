@@ -8,7 +8,7 @@ BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 logger() {
   local GREEN="\033[1;32m"
   local NC="\033[00m"
-  echo -e "${GREEN}Installer:${NC}"
+  echo -e "${GREEN}Logger: $1 ${NC}"
 }
 
 github_latest_tag() {
@@ -19,13 +19,13 @@ github_latest_tag() {
 ###
 
 basic_install() {
-  echo "$(logger) Installing basic utils..."
+  logger "Installing basic utils..."
   sudo apt install -q -y editorconfig
 }
 
 ### tmux ###
 tmux_install() {
-  echo "$(logger) Installing latest tmux release..."
+  logger "Installing latest tmux release..."
   TMUX_VERSION=$(github_latest_tag tmux/tmux)
 
   sudo apt remove -q -y tmux
@@ -35,7 +35,7 @@ tmux_install() {
   tar -xf tmux-${TMUX_VERSION}.tar.gz && rm -f tmux-${TMUX_VERSION}.tar.gz
   cd tmux-${TMUX_VERSION} && ./configure && sudo make
   sudo checkinstall -y --pkgname tmux --pkgversion ${TMUX_VERSION} --nodoc --requires=libevent-dev,libncurses-dev --install=yes
-  echo "$(logger) Tmux was successfully installed, version: $(tmux -V)"
+  logger "Tmux was successfully installed, version: $(tmux -V)"
 
   xpanes_install
 
@@ -50,26 +50,26 @@ xpanes_install() {
 }
 
 tmux_clipboard() {
-  echo "$(logger) Please specify what type of clipboard do you want to install for tmux and other command line tools. You can choose 'xclip' for desktop or 'lemonade' for server."
+  logger "Please specify what type of clipboard do you want to install for tmux and other command line tools. You can choose 'xclip' for desktop or 'lemonade' for server."
   PS3="Please enter your choice: "
   options=("xclip" "lemonade")
 
   select opt in "${options[@]}"; do
     case $opt in
       "xclip")
-        echo "$(logger) Installing xclip..."
+        logger "Installing xclip..."
         sudo apt install -q -y xauth xclip
         ;;
 
       "lemonade")
-        echo "$(logger) Installing lemonade..."
+        logger "Installing lemonade..."
         lemonade_install
 
         read -r -p "Lemonade installed. Would you like to install fake-xclip in additional, with lemonade integration? [y/N] " resp
         if [[ "$resp" =~ ^([yY][eE][sS]|[yY])+$ ]]; then
           cp $BASEDIR/utils/xclip ~/.local/bin
           chmod a+x ~/.local/bin/xclip
-          echo "$(logger) Done, fake-xclip installed. Now you can use lemonade calling 'xclip' as an usual."
+          logger "Done, fake-xclip installed. Now you can use lemonade calling 'xclip' as an usual."
         fi
 
         echo "To share clipboard you have to make ssh connection from your Desktop machine to this server. It's better to use autoSSH."
@@ -95,7 +95,7 @@ lemonade_install() {
 ###
 
 fzf_install() {
-  echo "$(logger) Installing fzf..."
+  logger "Installing fzf..."
   rm -rf ~/.fzf
   sudo apt install -q -y highlight silversearcher-ag mediainfo
 
@@ -104,7 +104,7 @@ fzf_install() {
 }
 
 fd_install() {
-  echo "$(logger) Installing fd..."
+  logger "Installing fd..."
 
   FD_VERSION=$(github_latest_tag sharkdp/fd)
   cd /tmp && wget https://github.com/sharkdp/fd/releases/download/v${FD_VERSION}/fd_${FD_VERSION}_amd64.deb
@@ -115,7 +115,7 @@ fd_install() {
 
 ranger_install() {
   # note: install python first, using ubuntu_extended_install.sh
-  echo "$(logger) Installing Ranger File Manager..."
+  logger "Installing Ranger File Manager..."
   sudo apt install -q -y caca-utils highlight atool file w3m poppler-utils mediainfo
 
   pip3 install --upgrade --user ranger-fm

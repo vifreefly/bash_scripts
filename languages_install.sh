@@ -14,20 +14,20 @@ RUBY_VERSION=2.5.1
 logger() {
   local GREEN="\033[1;32m"
   local NC="\033[00m"
-  echo -e "${GREEN}Installer:${NC}"
+  echo -e "${GREEN}Logger: $1 ${NC}"
 }
 
 ### Python ###
 
 python_install() {
-  echo "$(logger) Installing python and pipi..."
+  logger "Installing python and pipi..."
   sudo apt install -q -y python python3 python-pip python3-pip
 }
 
 ### Golang ###
 
 golang_install() {
-  echo "$(logger) Installing golang..."
+  logger "Installing golang..."
 
   cd /tmp && wget https://dl.google.com/go/go${GOLANG_VERSION}.linux-amd64.tar.gz
   sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go${GOLANG_VERSION}.linux-amd64.tar.gz
@@ -43,7 +43,7 @@ golang_install() {
 
 node_js_install() {
   ### NodeJS installation ###
-  echo "$(logger) Installing NodeJS using NVM..."
+  logger "Installing NodeJS using NVM..."
   # install dependencies for node compiling
   sudo apt install -q -y build-essential libssl-dev
 
@@ -59,7 +59,7 @@ node_js_install() {
 
   # install latest stable lts release of node
   nvm install --lts
-  echo "$(logger) NodeJS installed, version: $(node -v)"
+  logger "NodeJS installed, version: $(node -v)"
 
   ### Yarn installation ###
   # Install yarn using oficial installation script
@@ -72,7 +72,7 @@ node_js_install() {
   export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
   # check yarn version
-  echo "$(logger) Yarn installed, version: $(yarn -v)"
+  logger "Yarn installed, version: $(yarn -v)"
 
   # ToDo: maybe it's a good idea to add alias from node to nodejs (in ubuntu)
 }
@@ -88,12 +88,12 @@ ruby_install() {
 }
 
 ruby_dependencies_install() {
-  echo "$(logger) Installing ruby build dependencies..."
+  logger "Installing ruby build dependencies..."
   sudo apt install -q -y zlib1g-dev build-essential libssl-dev libreadline-dev libreadline6-dev libyaml-dev libxml2-dev libxslt1-dev libcurl4-openssl-dev libffi-dev
 }
 
 rbenv_install() {
-  echo "$(logger) Installing rbenv..."
+  logger "Installing rbenv..."
 
   cd && rm -rf ~/.rbenv
   git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
@@ -111,11 +111,11 @@ rbenv_install() {
 
 ruby_version_install() {
   # Install ruby
-  echo "$(logger) Installing ruby ${RUBY_VERSION}..."
+  logger "Installing ruby ${RUBY_VERSION}..."
   export CONFIGURE_OPTS="--disable-install-doc"
   rbenv install $RUBY_VERSION
 
-  echo "$(logger) Enabling ruby ${RUBY_VERSION} as global version..."
+  logger "Enabling ruby ${RUBY_VERSION} as global version..."
   rbenv global $RUBY_VERSION
 
   rbenv rehash
@@ -127,7 +127,7 @@ bundler_install() {
   echo "gem: --no-ri --no-rdoc" > ~/.gemrc && chmod 644 ~/.gemrc
 
   # install bundler
-  echo "$(logger) Installing bundler..."
+  logger "Installing bundler..."
   rbenv exec gem install bundler
 
   ### bundler config ###
