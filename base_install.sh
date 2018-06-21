@@ -40,6 +40,7 @@ configure_locale() {
 # It should be on any linux server by default
 micro_install() {
   echo "$(logger) Installing Micro editor..."
+  # delete old version first (if it's already exists)
   cd /usr/local/bin && sudo rm -f micro
   sudo curl https://getmic.ro | sudo bash
 

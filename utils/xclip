@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# fake-xcip
+
+POSITIONAL=()
+
+while [[ $# -gt 0 ]]
+do
+  key="$1"
+  case $key in
+    -in|-i)
+      COPY=true
+      shift # past argument
+      shift # past value
+      ;;
+
+    -out|-o)
+      PASTE=true
+      shift # past argument
+      shift # past value
+      ;;
+
+    *) # unknown option
+      POSITIONAL+=("$1") # save it in an array for later
+      shift
+      ;;
+  esac
+done
+
+set -- "${POSITIONAL[@]}" # restore positional parameters
+
+if [ "$COPY" == true ]; then
+  stdin=$(cat)
+  echo -n "$stdin" | lemonade copy --line-ending=lf
+
+elif [ "$PASTE" == true ]; then
+  lemonade paste --line-ending=lf
+else
+  # By default, when xclip called without flags (-i or -o) it's works in copy mode (-i) anyway.
+  stdin=$(cat)
+  echo -n "$stdin" | lemonade copy --line-ending=lf
+fi

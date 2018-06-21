@@ -78,15 +78,15 @@ Also there is an additional setup to restrict login to root user using password 
 **Install basic utils**:
 First we'll install some command line tools, some of them are required for next setup, but some of them just handy to use in day to day server administration process.
 
-You can check the script here [base_install.sh](https://github.com/vfreefly/dotfiles/blob/master/automation_scripts/ubuntu/base_install.sh):
+You can check the script here [base_install.sh](https://github.com/vfreefly/bash_scripts/blob/master/base_install.sh):
 
 Installation:
 ```bash
-$ curl -L https://raw.githubusercontent.com/vfreefly/dotfiles/master/automation_scripts/ubuntu/base_install.sh | bash
+$ curl -L https://raw.githubusercontent.com/vfreefly/bash_scripts/master/base_install.sh | bash
 ```
 
 For now, basic setup for an ubuntu server is done. You can check other avaiable automation scripts:
-* [languages_install.sh](https://github.com/vfreefly/dotfiles/blob/master/automation_scripts/ubuntu/languages_install.sh)
-* [databases_install.sh](https://github.com/vfreefly/dotfiles/blob/master/automation_scripts/ubuntu/databases_install.sh)
-* [headless_install.sh](https://github.com/vfreefly/dotfiles/blob/master/automation_scripts/ubuntu/headless_install.sh)
-* [cli_utils_install.sh](https://github.com/vfreefly/dotfiles/blob/master/automation_scripts/ubuntu/cli_utils_install.sh)
+* [languages_install.sh](https://github.com/vfreefly/bash_scripts/blob/master/languages_install.sh)
+* [databases_install.sh](https://github.com/vfreefly/bash_scripts/blob/master/databases_install.sh)
+* [headless_install.sh](https://github.com/vfreefly/bash_scripts/blob/master/headless_install.sh)
+* [cli_utils_install.sh](https://github.com/vfreefly/bash_scripts/blob/master/cli_utils_install.sh)

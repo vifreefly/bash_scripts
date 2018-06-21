@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # note: all utils installing to local ~/.local/bin path, so make sure
-# what you have this directory in your $PATH (base_install.sh doing this)
+# that you have this directory in your $PATH (check base_install.sh)
 
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
@@ -67,7 +67,7 @@ tmux_clipboard() {
 
         read -r -p "Lemonade installed. Would you like to install fake-xclip in additional, with lemonade integration? [y/N] " resp
         if [[ "$resp" =~ ^([yY][eE][sS]|[yY])+$ ]]; then
-          cp $BASEDIR/tools/xclip ~/.local/bin
+          cp $BASEDIR/utils/xclip ~/.local/bin
           chmod a+x ~/.local/bin/xclip
           echo "$(logger) Done, fake-xclip installed. Now you can use lemonade calling 'xclip' as an usual."
         fi

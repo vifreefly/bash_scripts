@@ -2,14 +2,14 @@
 
 ## Basic ubuntu 16.04 setup
 
-First, you need to perform basic setup: [_Ubuntu server setup readme_](https://github.com/vfreefly/dotfiles/blob/master/automation_scripts/ubuntu/README.md).
+First, you need to perform a basic setup: [_Ubuntu server setup readme_](https://github.com/vfreefly/bash_scripts/blob/master/README.md).
 
 
 ## Ruby setup
 
 After when you done with a basic setup, we are going to install ruby.
 
-Here is a script: [languages_install.sh](https://github.com/vfreefly/dotfiles/blob/master/automation_scripts/ubuntu/languages_install.sh).
+Here is a script: [languages_install.sh](https://github.com/vfreefly/bash_scripts/blob/master/languages_install.sh).
 
 > Script contains setup for python, go, nodejs and ruby programming languages. You can install only one language, for this just provide a name of the function to execute, in our case (ruby) it will be: `$ bash languages_install.sh ruby_install`.
 
@@ -21,7 +21,7 @@ For ruby setup script doing next things:
 
 To install:
 ```bash
-$ curl -L https://github.com/vfreefly/dotfiles/raw/master/automation_scripts/ubuntu/languages_install.sh | bash -s ruby_install
+$ curl -L https://raw.githubusercontent.com/vfreefly/bash_scripts/master/languages_install.sh | bash -s ruby_install
 ```
 
 After, update enviroment variables of your bash session (to have a just installed rbenv/ruby command avaiable in terminal): `$ exec $SHELL`.
@@ -31,7 +31,7 @@ After, update enviroment variables of your bash session (to have a just installe
 
 Before installing Rails, we need to install database server. Usually for Rails it's mysql or postgres. Sometimes sqlite uses for development mode.
 
-So, _we need_ to install **sqlite** support **+** **mysql** or **postgres** server **and setup a database user**. Check the [DATABASES_SETUP.md](https://github.com/vfreefly/dotfiles/blob/master/automation_scripts/ubuntu/databases_install.sh) guide how to do it.
+So, _we need_ to install **sqlite** support **+** **mysql** or **postgres** server **and setup a database user**. Check the [DATABASES_SETUP.md](https://github.com/vfreefly/bash_scripts/blob/master/base_install.sh) guide how to do it.
 
 ## Rails install
 > Install nodeJS
