@@ -1,10 +1,11 @@
 #!/bin/bash
 
 # check latest here https://sites.google.com/a/chromium.org/chromedriver/downloads
-CHROMEDRIVER_VERSION=2.38
+# note: for now there is harcoded 2.39 version, 2.40 version is too baggy
+CHROMEDRIVER_VERSION=2.39
 
 # check latest here https://github.com/mozilla/geckodriver/releases/
-GECKODRIVER_VERSION=0.20.1
+GECKODRIVER_VERSION=0.21.0
 
 # check latest here http://phantomjs.org/download.html
 PHANTOMJS_VERSION=2.1.1

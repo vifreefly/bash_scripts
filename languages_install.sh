@@ -4,7 +4,7 @@
 # `$ bash extended_install.sh node_js_install`
 
 # check latest here https://golang.org/dl/
-GOLANG_VERSION="1.10.2"
+GOLANG_VERSION="1.10.3"
 
 # check latest here https://www.ruby-lang.org/en/downloads/releases/
 RUBY_VERSION=2.5.1
