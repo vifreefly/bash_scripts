@@ -11,7 +11,8 @@ basic_install() {
   sudo apt -y update
 
   logger "Install basic utils..."
-  sudo apt install -q -y git wget curl tar zip unzip file tree htop ssh gnupg build-essential bash-completion net-tools dpkg python-software-properties
+  sudo apt install -q -y git wget curl openssl tar zip unzip file tree htop ssh gnupg build-essential bash-completion net-tools dpkg software-properties-common
+  # python-software-properties
 }
 
 set_local_bin_path() {

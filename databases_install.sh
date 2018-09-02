@@ -12,7 +12,7 @@
 # configuration and create database user
 
 # check latest here https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
-MONGO_DB_VERSION="3.6"
+MONGO_DB_VERSION="4.0"
 
 ###
 
@@ -61,10 +61,16 @@ mongodb_install() {
     sudo apt install -q -y mongodb-clients
     logger "Successfully installed mongodb client"
   else
-    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
-    echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/${MONGO_DB_VERSION} multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-${MONGO_DB_VERSION}.list
+    # add key
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4
+
+    # for 16.04:
+    # echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/${MONGO_DB_VERSION} multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-${MONGO_DB_VERSION}.list
+    # for 18.04:
+    echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/${MONGO_DB_VERSION} multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-${MONGO_DB_VERSION}.list
+
     sudo apt update
-    sudo apt-get install -q -y mongodb-org
+    sudo apt install -q -y mongodb-org
     logger "Successfully installed mongodb server"
 
     sudo service mongod start
