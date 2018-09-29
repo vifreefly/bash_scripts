@@ -29,7 +29,7 @@ After, update enviroment variables of your bash session (to have a just installe
 
 ## Database install
 
-Before installing Rails, we need to install database server. Usually for Rails it's mysql or postgres. Sometimes sqlite uses for development mode.
+Before installing Rails, we need to **install database server.** Usually for Rails it's mysql or postgres. Sometimes sqlite uses for development mode.
 
 [databases_install.sh](databases_install.sh) is an automation script with installs MySQL, Postgres, SQlite and MongoDB database servers/clients. To install only Postgres (common shoice for using with Rails), type:
 
@@ -43,19 +43,12 @@ Or, because Postgres can be installed actually within a one line, just type inst
 $ sudo apt install -q -y postgresql postgresql-contrib libpq-dev
 ```
 
-Next, you need to create Postgres role (user) with permission to create databases:
 
-1) Login to the postgres system user:
+**Next**, you need to **create Postgres role (user)** with permission to create databases:
 
-```bash
-$ sudo -i -u postgres
-```
+1) Login to the postgres system user: `$ sudo -i -u postgres`
 
-2) Login to the psql console:
-
-```bash
-$ psql
-```
+2) Login to the psql console: `$ psql`
 
 3) Create user `deploy` with password `123456`:
 
@@ -67,13 +60,24 @@ create role deploy with createdb login password '123456';
 
 All done, now you can exit from the psql console and postgres user by typing: `\q` and `exit`.
 
+Some Postgres securily manuals:
+* https://www.postgresql.org/docs/7.0/static/security.htm
+* https://chartio.com/resources/tutorials/how-to-set-the-default-user-password-in-postgresql/
+* https://www.digitalocean.com/community/tutorials/how-to-secure-postgresql-against-automated-attacks
 
 ## Rails install
-Rails required NodeJS to compile assets, to install latest LTS release using NVM, type:
+Rails required **NodeJS** to compile assets, to install latest LTS release using NVM, type:
 
 ```bash
 $ curl -L https://raw.githubusercontent.com/vifreefly/bash_scripts/master/languages_install.sh | bash -s node_js_install
 ```
+
+If you're using background jobs, like Sidekiq, you need to install Redis server for this:
+
+```bash
+$ sudo apt install redis-server
+```
+
 
 Now you can install Rails gem itself:
 
