@@ -9,11 +9,13 @@ First, login to the server as a root user: `$ ssh root@your_server_ip`. You'll b
 ### Create a new sudo user
 
 ```bash
+# create user `username`:
 $ adduser username
-$ gpasswd -a username sudo
+
+# add `username` to the sudo group:
+$ adduser username sudo # or `$ gpasswd -a username sudo`
 ```
 Then logout and login again to the server using your `username` login.
-
 
 
 ### Setup ssh keys, copy your public key to the server
@@ -36,14 +38,11 @@ $ ssh-keygen
 `ssh-keygen` will ask you to pick a name for a keypair, and optional passprase.
 
 
-
 **Next:**
 Invoke ssh-agent keychain firt, in case if it not loaded yet
 ```bash
 $ eval $(ssh-agent)
 ```
-
-
 
 `ssh-add`  command will load your private id_rsa key to the system keychain, so you can login to the servers without password if these servers have matching public key (`id_rsa.pub`) with this private key.
 Usually linux automatically loads private key with a name `id_rsa` to the keychain,so this option only to show how you can load a custom one (with name other than `id_rsa`) private key to the keychain using `ssh-add` tool.
@@ -51,8 +50,6 @@ Usually linux automatically loads private key with a name `id_rsa` to the keycha
 ```bash
 $ ssh-add ~/.ssh/id_rsa
 ```
-
-
 
 `ssh-copy-id` command will copy to the server a public key (`id_rsa.pub`) of your private key (`id_rsa`).
 All public keys added within tool `ssh-copy-id` are stored on remote machine in the file `~/.ssh/authorized_keys`.
