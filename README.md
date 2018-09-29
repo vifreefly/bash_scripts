@@ -82,8 +82,4 @@ Installation:
 $ curl -L https://raw.githubusercontent.com/vifreefly/bash_scripts/master/base_install.sh | bash
 ```
 
-For now, basic setup for an ubuntu server is done. You can check other avaiable automation scripts:
-* [languages_install.sh](https://github.com/vifreefly/bash_scripts/blob/master/languages_install.sh)
-* [databases_install.sh](https://github.com/vifreefly/bash_scripts/blob/master/databases_install.sh)
-* [headless_install.sh](https://github.com/vifreefly/bash_scripts/blob/master/headless_install.sh)
-* [cli_utils_install.sh](https://github.com/vifreefly/bash_scripts/blob/master/cli_utils_install.sh)
+For now, basic setup for an ubuntu server is done. Check out [RUBY_RAILS_SETUP.md](RUBY_RAILS_SETUP.md) to see how to install Rails environment.
