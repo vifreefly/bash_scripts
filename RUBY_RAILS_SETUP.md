@@ -31,7 +31,7 @@ After, update enviroment variables of your bash session (to have a just installe
 
 Before installing Rails, we need to install database server. Usually for Rails it's mysql or postgres. Sometimes sqlite uses for development mode.
 
-Here [databases_install.sh](bash_scripts/blob/master/databases_install.sh) is an automation script with installs MySQL, Postgres, SQlite and MongoDB database servers/clients. To install only Postgres (common shoice for using with Rails), type:
+[databases_install.sh](databases_install.sh) is an automation script with installs MySQL, Postgres, SQlite and MongoDB database servers/clients. To install only Postgres (common shoice for using with Rails), type:
 
 ```bash
 $ curl -L https://raw.githubusercontent.com/vifreefly/bash_scripts/master/databases_install.sh | bash -s postgres_install
@@ -42,6 +42,31 @@ Or, because Postgres can be installed actually within a one line, just type inst
 ```bash
 $ sudo apt install -q -y postgresql postgresql-contrib libpq-dev
 ```
+
+Next, you need to create Postgres role (user) with permission to create databases:
+
+1) Login to the postgres system user:
+
+```bash
+$ sudo -i -u postgres
+```
+
+2) Login to the psql console:
+
+```bash
+$ psql
+```
+
+3) Create user `deploy` with password `123456`:
+
+> It is a good idea to name the postgres user as name of your (Rails) application
+
+```
+create role deploy with createdb login password '123456';
+```
+
+All done, now you can exit from the psql console and postgres user by typing: `\q` and `exit`.
+
 
 ## Rails install
 Rails required NodeJS to compile assets, to install latest LTS release using NVM, type:
