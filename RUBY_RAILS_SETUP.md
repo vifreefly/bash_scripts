@@ -31,11 +31,31 @@ After, update enviroment variables of your bash session (to have a just installe
 
 Before installing Rails, we need to install database server. Usually for Rails it's mysql or postgres. Sometimes sqlite uses for development mode.
 
-So, _we need_ to install **sqlite** support **+** **mysql** or **postgres** server **and setup a database user**. Check the [DATABASES_SETUP.md](https://github.com/vifreefly/bash_scripts/blob/master/base_install.sh) guide how to do it.
+Here [databases_install.sh](bash_scripts/blob/master/databases_install.sh) is an automation script with installs MySQL, Postgres, SQlite and MongoDB database servers/clients. To install only Postgres (common shoice for using with Rails), type:
+
+```bash
+$ curl -L https://raw.githubusercontent.com/vifreefly/bash_scripts/master/databases_install.sh | bash -s postgres_install
+```
+
+Or, because Postgres can be installed actually within a one line, just type instead:
+
+```bash
+$ sudo apt install -q -y postgresql postgresql-contrib libpq-dev
+```
 
 ## Rails install
-> Install nodeJS
+Rails required NodeJS to compile assets, to install latest LTS release using NVM, type:
+
+```bash
+$ curl -L https://raw.githubusercontent.com/vifreefly/bash_scripts/master/languages_install.sh | bash -s node_js_install
+```
+
+Now you can install Rails gem itself:
+
+```bash
+$ gem install rails
+```
+
 
 ## Rails server install + optimization
-
 ## Server monitoring, autoupdate from github
