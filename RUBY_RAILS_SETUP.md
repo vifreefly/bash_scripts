@@ -60,6 +60,10 @@ create role deploy with createdb login password '123456';
 
 All done, now you can exit from the psql console and postgres user by typing: `\q` and `exit`.
 
+Additional psql commands:
+* Create database `stats` owned by `deploy` role user: `CREATE DATABASE stats OWNER deploy;`
+* Delete database `stats`: `DELETE DATABASE stats`
+
 Some Postgres securily manuals:
 * https://www.postgresql.org/docs/7.0/static/security.htm
 * https://chartio.com/resources/tutorials/how-to-set-the-default-user-password-in-postgresql/
