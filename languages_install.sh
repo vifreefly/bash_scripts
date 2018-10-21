@@ -7,7 +7,7 @@
 GOLANG_VERSION="1.10.3"
 
 # check latest here https://www.ruby-lang.org/en/downloads/releases/
-RUBY_VERSION=2.5.1
+RUBY_VERSION=2.5.3
 
 ###
 
