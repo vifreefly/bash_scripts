@@ -78,11 +78,17 @@ mongodb_install() {
   fi
 }
 
+redis_install() {
+  sudo apt install redis-server
+  logger "Successfully installed redis server"
+}
+
 main() {
   sqlite3_install
   mysql_install
   postgres_install
   mongodb_install
+  redis_install
 }
 
 ###
