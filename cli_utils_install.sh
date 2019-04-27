@@ -92,6 +92,10 @@ lemonade_install() {
   wget -qO- https://github.com/pocke/lemonade/releases/download/v${LEMONADE_VERSION}/lemonade_linux_amd64.tar.gz | tar xvz -C ~/.local/bin
 }
 
+xclip_install() {
+  sudo apt install xclip
+}
+
 ###
 
 fzf_install() {
@@ -130,7 +134,10 @@ ranger_install() {
 
 main() {
   basic_install
-  tmux_install
+
+  # tmux_install
+  xclip_install
+
   fzf_install
   fd_install
   ranger_install
